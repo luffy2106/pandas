@@ -1,6 +1,6 @@
 ### This respo was mainly taken from HUYENCHIP with some update, the original respo : https://github.com/chiphuyen/just-pandas-things  
 
-### Thanks HUYENCHIP to this respo  
+### Thanks HUYENCHIP for sharing
 
 
 
