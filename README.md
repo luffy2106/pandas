@@ -16,6 +16,4 @@ This repo contains a few peculiar things I've learned about pandas that have mad
 5. Data exploration
 6. Common pitfalls
 
-I'll continue updating this repo as I have more time. As I'm still learning pandas quirks, feedback is much appreciated.
 
-Thanks [Luke Metz](https://twitter.com/luke_metz), [Vikram Tiwari](https://twitter.com/Vikram_Tiwari), and [Karson Elmgren](https://karsonelmgren.com/) for reviewing!
