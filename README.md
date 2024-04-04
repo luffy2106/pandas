@@ -25,3 +25,11 @@ This repo contains a few peculiar things I've learned about pandas that have mad
 4. Accessors
 5. Data exploration
 6. Common pitfalls
+
+
+## Practice pandas
+
+The exercices in each notebook is take from this resources:
+```
+https://www.w3resource.com/python-exercises/pandas/index.php
+```
