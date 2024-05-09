@@ -117,6 +117,10 @@ print(result_df)
 - df.describe(): Get the basic statistics of each column of the sample data(count, mean, std, min, 25%, 50%, 75%, max)
 - df.info() : Get the information about the various data types used and the non-null count of each column.
 - df.corr(): This can give you the correlation matrix between all the numeric columns in the data frame(note that it's only apply for numeric columns) (*)
+- To calculate the correlation between two columns (e.g., 'column1' and 'column2') in the DataFrame:
+```
+correlation_coefficient = df['column1'].corr(df['column2']) 
+```
 ##### 5.2 Statistical calculations
 - mean(): Calculates the mean value for each column.
 - sum(): Computes the sum of values for each column.
@@ -129,9 +133,29 @@ print(result_df)
 - quantile(): Computes the quantile for each column, default x = 0.5(**)
 
 Reference:
-- Correlation Coefficient Formula(*):
+1. Understanding Correlation (*)
+Correlation is a statistical measure that describes the extent to which two variables change together. In other words, it quantifies the relationship between two sets of data.
+
+* Correlation Coefficient:
+- The correlation coefficient is a value between -1 and 1 that indicates the strength and direction of a linear relationship between two variables.
+- A correlation coefficient of 1 indicates a perfect positive correlation where one variable increases as the other variable increases.
+- A correlation coefficient of -1 indicates a perfect negative correlation where one variable decreases as the other variable increases.
+- A correlation coefficient of 0 indicates no linear relationship between the variables.
+* Interpretation:
+- Positive correlation: When two variables move in the same direction, i.e., when one increases, the other also tends to increase.
+- Negative correlation: When two variables move in opposite directions, i.e., when one increases, the other tends to decrease.
+-  No correlation: When changes in one variable do not predict changes in the other variable.
+* Uses:
+- Correlation is commonly used in various fields such as finance, economics, science, and social sciences to understand relationships between variables.
+- It helps in determining how one variable may be useful in predicting another variable.
+- Correlation does not imply causation; it only measures the strength of the relationship between two variables.
+
+In summary, correlation provides insight into how strongly and in what direction two variables are related. It is a valuable tool for understanding patterns and making predictions based on data analysis.
+
+* Correlation Coefficient Formula(*):
 r = (Σ((X_i - X_mean) * (Y_i - Y_mean))) / (sqrt(Σ(X_i - X_mean)^2) * sqrt(Σ(Y_i - Y_mean)^2))
-- quantile(**)
+
+2. quantile(**)
 ```
 # Create a sample DataFrame
 data = {'A': [10, 20, 30, 40, 50],
@@ -161,8 +185,16 @@ The df.quantile(0.25) function automatically computes the 25th percentile for ea
 You can group a column by its name and then apply some aggregation functions like sum, min/max, mean, etc.
 Ex :
 ```
-df.groupby("CITY").agg({"SALES": "sum"})
+df_group = df.groupby("CITY").agg({"SALES": "sum"})
 ```
+Remeber that each group in the df_group object resulting from a groupby operation is a dataframe.
+If you want to see each group
+```
+for name, group in neighborhood_groups:
+    print(f"Neighborhood: {name}")
+    display(group.head(3))
+```
+Take a look at question 5.9, Airbnb_dataset.ipynb to see how to manipulate object df_group after groupby.
 - Multiple aggregations
 Ex:
 ```
