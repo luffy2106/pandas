@@ -77,6 +77,15 @@ dtype: float64
 ```
 
 #####  4.2 apply() with predefined function with parameter
+- By column
+Ex :
+```
+def multiply_by_param(column, param):
+    return column * param
+param_value = 3
+result = df.apply(multiply_by_param, axis=0, args=(param_value,))
+```
+- By row
 Ex :
 ```
 def scale_experience_five(row,scale):
@@ -84,7 +93,6 @@ def scale_experience_five(row,scale):
 times = 5
 df.apply(scale_experience_five, args=(times,), axis=1)
 ```
-
 #####  4.3. Applymap 
 applymap is a DataFrame method in pandas that operates element-wise on a DataFrame(all elements in the dataframe)
 Ex :
@@ -194,12 +202,14 @@ for name, group in neighborhood_groups:
     print(f"Neighborhood: {name}")
     display(group.head(3))
 ```
-Take a look at question 5.9, Airbnb_dataset.ipynb to see how to manipulate object df_group after groupby.
 - Multiple aggregations
 Ex:
 ```
 aggregation = df.agg({"SALES": "sum", "QUANTITYORDERED": "mean"})
 ```
+More example, Take a look at:
+- Question 5.9, Airbnb_dataset.ipynb to see how to manipulate object df_group after groupby. 
+- interview/QRT/pandas_exercise.ipynb, question 4 (Group by state_id to see the subject of each state)
 6.2 Sorting data
 You can sort the data based on a specific column, either in the ascending order or in the descending order.
 Ex:
