@@ -227,6 +227,46 @@ ex:
 ```
 pd.pivot_table(df, values="SALES", index="CITY", columns="year_id", aggfunc="sum")
 ```
+6.4 Melt function
+In pandas, the melt function is used to transform or reshape a DataFrame from wide format to long format.
+Here's a brief explanation of how melt works:
+- Wide Format: In a wide-format DataFrame, variables are stored in columns and each observation is stored in a separate row.
+- Long Format: In a long-format DataFrame, variables are stored in multiple rows while observations are repeated as necessary.
+```
+import pandas as pd
+# Create a sample DataFrame
+data = {'Name': ['Alice', 'Bob', 'Charlie'],
+        'Math': [90, 85, 88],
+        'Science': [88, 82, 90]}
+df = pd.DataFrame(data)
+# Melt the DataFrame
+melted_df = df.melt(id_vars=['Name'], var_name='Subject', value_name='Score')
+# or 
+melted_df = df.melt(id_vars=['Name'], value_vars=['Math','Science']; var_name='Subject', value_name='Score')
+
+print(melted_df)
+```
+result 
+```
+Name    Subject    Score
+Alice    Math        90
+Bob      Math        85
+Charlie   Math       88
+Alice    Science     88
+Bob      Science     82
+Charlie  Science     90
+```
+NOTE:
+To revert the melt operation and go back to the original format of the DataFrame, you can use the pivot_table function in pandas. Here's how you can revert the melted DataFrame melted_df back to its original format:
+```
+original_df = melted_df.pivot_table(index='Name', columns='Subject', values='Score', aggfunc='first').reset_index()
+```
+
+Practice :
+```
+https://leetcode.com/problems/reshape-data-melt/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+```
+
 #### 7. Combining Data Frames
 - Combine horizontially(by rows)
 ```
@@ -297,6 +337,7 @@ Q1 is the first quartile representing the 25th percentile of the data and Q3 is 
 lower_bound variable stores the lower bound that is used for finding potential outliers. Its value is set to 1.5 times the IQR below Q1. Similarly, upper_bound calculates the upper bound, 1.5 times the IQR above Q3.
 
 After which, you filter out the outliers that are less than the lower or greater than the upper bound.
+
 
 
 
